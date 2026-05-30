@@ -2,7 +2,7 @@ name: Scrape Court Availability
 
 on:
   schedule:
-    - cron: '*/15 * * * *'   # Runs Every 15 mins
+    - cron: '*/10 * * * *'   # Runs Every 10 mins
   workflow_dispatch:           # manual trigger from GitHub UI
 
 jobs:
