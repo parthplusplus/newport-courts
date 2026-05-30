@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Newport Racquet Club — Court Availability</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0d1117;
+      --surface:   #161b22;
+      --border:    #21262d;
+      --green:     #39d353;
+      --green-dim: #196127;
+      --text:      #e6edf3;
+      --muted:     #7d8590;
+      --accent:    #58a6ff;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Mono', monospace;
+      min-height: 100vh;
+      padding: 2rem 1rem 4rem;
+    }
+
+    /* noise overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    .wrap { max-width: 860px; margin: 0 auto; position: relative; z-index: 1; }
+
+    header { margin-bottom: 3rem; }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      letter-spacing: -0.02em;
+      color: var(--text);
+      line-height: 1.1;
+    }
+    .logo span { color: var(--green); }
+
+    .meta {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-top: 0.5rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* status bar */
+    .statusbar {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 1.5rem;
+      padding: 0.6rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--surface);
+    }
+    .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--green);
+      animation: pulse 2s ease infinite;
+      flex-shrink: 0;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.3; }
+    }
+
+    /* date group */
+    .day-group { margin-bottom: 2rem; }
+
+    .day-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 0 0 0.6rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 0.75rem;
+    }
+    .day-label strong { color: var(--text); font-weight: 500; }
+
+    /* slot cards */
+    .slots { display: flex; flex-direction: column; gap: 0.5rem; }
+
+    .slot-card {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.9rem 1.1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.15s, background 0.15s, transform 0.1s;
+      animation: fadeUp 0.3s ease both;
+    }
+    .slot-card:hover {
+      border-color: var(--green-dim);
+      background: #1a2230;
+      transform: translateY(-1px);
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .slot-info { display: flex; flex-direction: column; gap: 0.2rem; }
+
+    .slot-time {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+    .slot-court {
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    .slot-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.7rem;
+      color: var(--green);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .slot-badge::before {
+      content: '';
+      display: block;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+    }
+
+    .book-arrow {
+      font-size: 0.75rem;
+      color: var(--accent);
+      margin-left: 0.5rem;
+      opacity: 0;
+      transition: opacity 0.15s;
+    }
+    .slot-card:hover .book-arrow { opacity: 1; }
+
+    /* empty state */
+    .empty {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+    }
+    .empty-icon { font-size: 2rem; margin-bottom: 1rem; }
+
+    /* loading */
+    #loading {
+      text-align: center;
+      padding: 4rem;
+      color: var(--muted);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+    }
+
+    footer {
+      margin-top: 3rem;
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo">Newport<span>.</span> Court Availability</div>
+    <div class="meta">Newport Racquet Club · Jersey City, NJ</div>
+    <div class="statusbar">
+      <div class="dot"></div>
+      <span id="last-updated">Loading...</span>
+    </div>
+  </header>
+
+  <div id="content">
+    <div id="loading">Fetching availability data...</div>
+  </div>
+
+  <footer>Updated every 12 hours via GitHub Actions · Click any slot to book</footer>
+</div>
+
+<script>
+  const BOOKING_URL = "https://reservations.waivermaster.com/?qs=860dcffb-7bd4-4332-8600-f7b0021b722c|e2d2d26e-f054-4694-afac-0aa0421600a4|7fe27a8a-22a1-4282-9a07-07fc144ae0b2";
+
+  const DAYS = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+  function formatDate(dateStr) {
+    const [y, m, d] = dateStr.split("-").map(Number);
+    const dt = new Date(y, m - 1, d);
+    return `${DAYS[dt.getDay()]}, ${MONTHS[m-1]} ${d}`;
+  }
+
+  function groupByDate(slots) {
+    return slots.reduce((acc, s) => {
+      (acc[s.date] = acc[s.date] || []).push(s);
+      return acc;
+    }, {});
+  }
+
+  async function load() {
+    try {
+      const res  = await fetch(`availability.json?t=${Date.now()}`);
+      const all  = await res.json();
+      const open = all.filter(s => s.free);
+
+      // last updated = scraped_at field if present, else file mtime fallback
+      const lastMod = res.headers.get("last-modified");
+      document.getElementById("last-updated").textContent =
+        "Last updated: " + (lastMod ? new Date(lastMod).toLocaleString() : "recently");
+
+      const content = document.getElementById("content");
+
+      if (!open.length) {
+        content.innerHTML = `
+          <div class="empty">
+            <div class="empty-icon">🎾</div>
+            No open slots right now. Check back soon — data refreshes every 12 hours.
+          </div>`;
+        return;
+      }
+
+      const grouped = groupByDate(open);
+      let html = "";
+      let delay = 0;
+
+      for (const [date, slots] of Object.entries(grouped)) {
+        html += `<div class="day-group">
+          <div class="day-label"><strong>${formatDate(date)}</strong> &nbsp;·&nbsp; ${date}</div>
+          <div class="slots">`;
+
+        // dedupe by slot+court
+        const seen = new Set();
+        for (const s of slots) {
+          const key = `${s.slot}|${s.court}`;
+          if (seen.has(key)) continue;
+          seen.add(key);
+
+          html += `
+            <a class="slot-card" href="${BOOKING_URL}" target="_blank" rel="noopener"
+               style="animation-delay:${delay * 60}ms">
+              <div class="slot-info">
+                <div class="slot-time">${s.slot_label}</div>
+                <div class="slot-court">${s.court}</div>
+              </div>
+              <div style="display:flex;align-items:center">
+                <div class="slot-badge">Open</div>
+                <div class="book-arrow">→ Book</div>
+              </div>
+            </a>`;
+          delay++;
+        }
+        html += `</div></div>`;
+      }
+
+      content.innerHTML = html;
+    } catch (e) {
+      document.getElementById("content").innerHTML =
+        `<div class="empty"><div class="empty-icon">⚠️</div>Could not load availability data.<br>${e.message}</div>`;
+    }
+  }
+
+  load();
+</script>
+</body>
+</html>
