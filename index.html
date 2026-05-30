@@ -234,13 +234,12 @@
   async function load() {
     try {
       const res  = await fetch(`availability.json?t=${Date.now()}`);
-      const all  = await res.json();
+      const json = await res.json();
+      const all  = json.slots || [];
       const open = all.filter(s => s.free);
 
-      // last updated = scraped_at field if present, else file mtime fallback
-      const lastMod = res.headers.get("last-modified");
       document.getElementById("last-updated").textContent =
-        "Last updated: " + (lastMod ? new Date(lastMod).toLocaleString() : "recently");
+        "Last updated: " + (json.scraped_at || "recently");
 
       const content = document.getElementById("content");
 

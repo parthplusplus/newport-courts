@@ -167,7 +167,13 @@ if __name__ == "__main__":
     open_slots = [r for r in rows if r["free"]]
     print_summary(open_slots)
 
+    output = {
+        "scraped_at": (lambda dt: dt.strftime("%B %d, %Y %I:%M %p ET"))(
+            datetime.utcnow() + timedelta(hours=-4)  # EDT; change to -5 in winter (EST)
+        ),
+        "slots": rows,
+    }
     with open("availability.json", "w") as f:
-        json.dump(rows, f, indent=2)
+        json.dump(output, f, indent=2)
     print(f"\nSaved to availability.json")
     print(f"Found {len(open_slots)} open court-slots out of {len(rows)} total.")
