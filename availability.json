@@ -1,5 +1,5 @@
 {
-  "scraped_at": "June 22, 2026 08:29 AM ET",
+  "scraped_at": "June 22, 2026 01:56 PM ET",
   "slots": [
     {
       "date": "2026-06-22",
@@ -907,9 +907,9 @@
       "slot_label": "11:00am-12:00pm",
       "court": "Court 4",
       "capacity": 8,
-      "sold": 0,
-      "available": 8,
-      "free": true
+      "sold": 8,
+      "available": 0,
+      "free": false
     },
     {
       "date": "2026-06-28",
@@ -1107,9 +1107,9 @@
       "slot_label": "5:00pm-6:00pm",
       "court": "Court 4",
       "capacity": 8,
-      "sold": 0,
-      "available": 8,
-      "free": true
+      "sold": 8,
+      "available": 0,
+      "free": false
     },
     {
       "date": "2026-06-29",
