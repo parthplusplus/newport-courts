@@ -1,5 +1,5 @@
 {
-  "scraped_at": "June 23, 2026 09:56 AM ET",
+  "scraped_at": "June 23, 2026 12:44 PM ET",
   "slots": [
     {
       "date": "2026-06-23",
@@ -7,9 +7,9 @@
       "slot_label": "5:00pm-6:00pm",
       "court": "Court 1",
       "capacity": 8,
-      "sold": 8,
-      "available": 0,
-      "free": false
+      "sold": 0,
+      "available": 8,
+      "free": true
     },
     {
       "date": "2026-06-23",
@@ -17,9 +17,9 @@
       "slot_label": "5:00pm-6:00pm",
       "court": "Court 2",
       "capacity": 8,
-      "sold": 8,
-      "available": 0,
-      "free": false
+      "sold": 0,
+      "available": 8,
+      "free": true
     },
     {
       "date": "2026-06-23",
@@ -27,9 +27,9 @@
       "slot_label": "5:00pm-6:00pm",
       "court": "Court 4",
       "capacity": 8,
-      "sold": 8,
-      "available": 0,
-      "free": false
+      "sold": 0,
+      "available": 8,
+      "free": true
     },
     {
       "date": "2026-06-23",
@@ -37,9 +37,9 @@
       "slot_label": "5:00pm-6:00pm",
       "court": "Court 3",
       "capacity": 8,
-      "sold": 8,
-      "available": 0,
-      "free": false
+      "sold": 0,
+      "available": 8,
+      "free": true
     },
     {
       "date": "2026-06-23",
