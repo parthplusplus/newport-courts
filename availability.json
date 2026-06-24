@@ -1,5 +1,5 @@
 {
-  "scraped_at": "June 24, 2026 04:36 AM ET",
+  "scraped_at": "June 24, 2026 08:03 AM ET",
   "slots": [
     {
       "date": "2026-06-24",
@@ -1087,9 +1087,9 @@
       "slot_label": "5:00pm-6:00pm",
       "court": "Court 1",
       "capacity": 8,
-      "sold": 0,
-      "available": 8,
-      "free": true
+      "sold": 8,
+      "available": 0,
+      "free": false
     },
     {
       "date": "2026-07-01",
