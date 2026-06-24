@@ -1,127 +1,7 @@
 {
-  "scraped_at": "June 23, 2026 07:32 PM ET",
+  "scraped_at": "June 24, 2026 12:42 AM ET",
   "slots": [
     {
-      "date": "2026-06-23",
-      "slot": "17:00",
-      "slot_label": "5:00pm-6:00pm",
-      "court": "Court 1",
-      "capacity": 8,
-      "sold": 0,
-      "available": 8,
-      "free": true
-    },
-    {
-      "date": "2026-06-23",
-      "slot": "17:00",
-      "slot_label": "5:00pm-6:00pm",
-      "court": "Court 2",
-      "capacity": 8,
-      "sold": 0,
-      "available": 8,
-      "free": true
-    },
-    {
-      "date": "2026-06-23",
-      "slot": "17:00",
-      "slot_label": "5:00pm-6:00pm",
-      "court": "Court 4",
-      "capacity": 8,
-      "sold": 0,
-      "available": 8,
-      "free": true
-    },
-    {
-      "date": "2026-06-23",
-      "slot": "17:00",
-      "slot_label": "5:00pm-6:00pm",
-      "court": "Court 3",
-      "capacity": 8,
-      "sold": 0,
-      "available": 8,
-      "free": true
-    },
-    {
-      "date": "2026-06-23",
-      "slot": "18:00",
-      "slot_label": "6:00pm-7:00pm",
-      "court": "Court 1",
-      "capacity": 8,
-      "sold": 0,
-      "available": 8,
-      "free": true
-    },
-    {
-      "date": "2026-06-23",
-      "slot": "18:00",
-      "slot_label": "6:00pm-7:00pm",
-      "court": "Court 2",
-      "capacity": 8,
-      "sold": 0,
-      "available": 8,
-      "free": true
-    },
-    {
-      "date": "2026-06-23",
-      "slot": "18:00",
-      "slot_label": "6:00pm-7:00pm",
-      "court": "Court 4",
-      "capacity": 8,
-      "sold": 0,
-      "available": 8,
-      "free": true
-    },
-    {
-      "date": "2026-06-23",
-      "slot": "18:00",
-      "slot_label": "6:00pm-7:00pm",
-      "court": "Court 3",
-      "capacity": 8,
-      "sold": 0,
-      "available": 8,
-      "free": true
-    },
-    {
-      "date": "2026-06-23",
-      "slot": "19:00",
-      "slot_label": "7:00pm-8:00pm",
-      "court": "Court 1",
-      "capacity": 8,
-      "sold": 0,
-      "available": 8,
-      "free": true
-    },
-    {
-      "date": "2026-06-23",
-      "slot": "19:00",
-      "slot_label": "7:00pm-8:00pm",
-      "court": "Court 2",
-      "capacity": 8,
-      "sold": 0,
-      "available": 8,
-      "free": true
-    },
-    {
-      "date": "2026-06-23",
-      "slot": "19:00",
-      "slot_label": "7:00pm-8:00pm",
-      "court": "Court 4",
-      "capacity": 8,
-      "sold": 0,
-      "available": 8,
-      "free": true
-    },
-    {
-      "date": "2026-06-23",
-      "slot": "19:00",
-      "slot_label": "7:00pm-8:00pm",
-      "court": "Court 3",
-      "capacity": 8,
-      "sold": 0,
-      "available": 8,
-      "free": true
-    },
-    {
       "date": "2026-06-24",
       "slot": "17:00",
       "slot_label": "5:00pm-6:00pm",
@@ -1200,6 +1080,126 @@
       "sold": 0,
       "available": 8,
       "free": true
+    },
+    {
+      "date": "2026-07-01",
+      "slot": "17:00",
+      "slot_label": "5:00pm-6:00pm",
+      "court": "Court 1",
+      "capacity": 8,
+      "sold": 0,
+      "available": 8,
+      "free": true
+    },
+    {
+      "date": "2026-07-01",
+      "slot": "17:00",
+      "slot_label": "5:00pm-6:00pm",
+      "court": "Court 2",
+      "capacity": 8,
+      "sold": 8,
+      "available": 0,
+      "free": false
+    },
+    {
+      "date": "2026-07-01",
+      "slot": "17:00",
+      "slot_label": "5:00pm-6:00pm",
+      "court": "Court 4",
+      "capacity": 8,
+      "sold": 8,
+      "available": 0,
+      "free": false
+    },
+    {
+      "date": "2026-07-01",
+      "slot": "17:00",
+      "slot_label": "5:00pm-6:00pm",
+      "court": "Court 3",
+      "capacity": 8,
+      "sold": 0,
+      "available": 8,
+      "free": true
+    },
+    {
+      "date": "2026-07-01",
+      "slot": "18:00",
+      "slot_label": "6:00pm-7:00pm",
+      "court": "Court 1",
+      "capacity": 8,
+      "sold": 8,
+      "available": 0,
+      "free": false
+    },
+    {
+      "date": "2026-07-01",
+      "slot": "18:00",
+      "slot_label": "6:00pm-7:00pm",
+      "court": "Court 2",
+      "capacity": 8,
+      "sold": 8,
+      "available": 0,
+      "free": false
+    },
+    {
+      "date": "2026-07-01",
+      "slot": "18:00",
+      "slot_label": "6:00pm-7:00pm",
+      "court": "Court 4",
+      "capacity": 8,
+      "sold": 8,
+      "available": 0,
+      "free": false
+    },
+    {
+      "date": "2026-07-01",
+      "slot": "18:00",
+      "slot_label": "6:00pm-7:00pm",
+      "court": "Court 3",
+      "capacity": 8,
+      "sold": 8,
+      "available": 0,
+      "free": false
+    },
+    {
+      "date": "2026-07-01",
+      "slot": "19:00",
+      "slot_label": "7:00pm-8:00pm",
+      "court": "Court 1",
+      "capacity": 8,
+      "sold": 8,
+      "available": 0,
+      "free": false
+    },
+    {
+      "date": "2026-07-01",
+      "slot": "19:00",
+      "slot_label": "7:00pm-8:00pm",
+      "court": "Court 2",
+      "capacity": 8,
+      "sold": 8,
+      "available": 0,
+      "free": false
+    },
+    {
+      "date": "2026-07-01",
+      "slot": "19:00",
+      "slot_label": "7:00pm-8:00pm",
+      "court": "Court 4",
+      "capacity": 8,
+      "sold": 8,
+      "available": 0,
+      "free": false
+    },
+    {
+      "date": "2026-07-01",
+      "slot": "19:00",
+      "slot_label": "7:00pm-8:00pm",
+      "court": "Court 3",
+      "capacity": 8,
+      "sold": 8,
+      "available": 0,
+      "free": false
     }
   ]
 }
